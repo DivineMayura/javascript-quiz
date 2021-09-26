@@ -77,7 +77,7 @@ var num = questions[0]
 
     function rotator() {
         for (var i=num; i>0; i++) {
-            if (timeLeft == 0) {
+            if (timeLeft == 0) {                                        //i probably need to move this out of the begin function and make it it's own function because begin should mostly just start the timer, as well as the rotator initially
                 console.log(i);
             }
             
