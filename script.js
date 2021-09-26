@@ -1,4 +1,17 @@
 
+//going to need it to start when the start button is hit.
+//timer begins counting as the first question is displayed.
+    //on incorrect response timer loses time.
+    //maybe get timer to flash red?
+//when answered: questions will cycle though to next question
+    //making use of node.textContent to update the same heading,body,and answers on page
+
+
+
+
+
+
+
 //this is my variable bank, where I store my precious variables
 var startButton     = document.querySelector("#startButton");
 var answerButtons    = document.querySelectorAll(".buttons");
@@ -57,17 +70,36 @@ var questions = [{
 
 
 //------------------------------------------------------------------//
-//countdown function using set interval and clear interval          //
-function timeKeeper() {
-    var timeLeft    = 120;
-    var timer       = setInterval(function () {
-        timeLeft--;
-        document.getElementById("timer").textContent = timeLeft;
-        if (timeLeft === 0) {
-            clearInterval(timer);
-            console.log("TIMERrANoUT");
+//             this is the start of the entire quiz
+function begin() {
+var timeLeft = 120; //  -   -   -   -   -   -   -   -   -   -   -   //number for timeLeft on the timer
+var num = questions[0]
+
+    function rotator() {
+        for (var i=num; i>0; i++) {
+            if (timeLeft == 0); {
+                console.log(i);
+            } else {
+                
+            }
         }
-    },1000);
+    };
+
+
+    var timer = setInterval(function () {                           //countdown function using set interval and clear interval
+        timeLeft--;                                                 //  this
+        document.getElementById("timer").textContent = timeLeft;    //   is
+        if (timeLeft === 0) {                                       //   the
+            clearInterval(timer);                                   //  timer
+            console.log("TIMERrANoUT");                             // function
+        }                                                           //
+    },1000);                                                        //
+
+    answers.textContent         = 
+    content.textContent         =
+    questionNumber.textContent  =
+
+answerButtons.addEventListener("click", rotator);
 }
 //------------------------------------------------------------------//
 
@@ -80,4 +112,4 @@ function timeKeeper() {
 
 
 
-startButton.addEventListener("click", timeKeeper);
+startButton.addEventListener("click", begin);
