@@ -5,23 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" ></script>
+    
     <title>Document</title>
 </head>
 <body>
     <div id="outerdiv">
         <div id="innerdiv">
             <h1> Time Left: </h1>
-            <h2 id="timer">0</h1>
+            <h2 id="timer">0</h2>
+            <span>seconds</span>
         </div>
         <div Id="quizBox">
             <header id="top">Javascript</header>
             <p id="content">Content</p>
             <ol id="answers">
-                <li><button id="answerButtons">Answer A</button></li>
-                <li><button id="answerButtons">Answer B</button></li>
-                <li><button id="answerButtons">Answer C</button></li>
-                <li><button id="answerButtons">Answer D</button></li>
+                <li><button class="answerButtons">Answer A</button></li>
+                <li><button class="answerButtons">Answer B</button></li>
+                <li><button class="answerButtons">Answer C</button></li>
+                <li><button class="answerButtons">Answer D</button></li>
             </ol>
         </div>
         <div id="startdiv">
@@ -38,5 +39,6 @@
             </div>
         </div>
     </div>
+    <script src="script.js" ></script>
 </body>
 </html>
