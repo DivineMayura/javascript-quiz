@@ -17,7 +17,7 @@ var startButton     = document.querySelector("#startButton");
 var answerButtons    = document.querySelectorAll(".buttons");
 var answers         = document.querySelector("#answers");
 var content         = document.querySelector("#content");
-var questonNumber   = document.querySelector("#top")
+var questionNumber   = document.querySelector("#top")
 var timer           = document.querySelector("#timer")
 
 
@@ -77,11 +77,10 @@ var num = questions[0]
 
     function rotator() {
         for (var i=num; i>0; i++) {
-            if (timeLeft == 0); {
+            if (timeLeft == 0) {
                 console.log(i);
-            } else {
-                
             }
+            
         }
     };
 
@@ -95,9 +94,9 @@ var num = questions[0]
         }                                                           //
     },1000);                                                        //
 
-    answers.textContent         = 
-    content.textContent         =
-    questionNumber.textContent  =
+    answers.textContent         = num.ans;
+    content.textContent         = num.q;
+    questionNumber.textContent  = num.qn;
 
 answerButtons.addEventListener("click", rotator);
 }
