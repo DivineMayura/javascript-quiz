@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link ref="stylesheet" src="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" ></script>
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <div>
+    <div id="outerdiv">
+        <div id="innerdiv">
             <h1> Time Left: </h1>
-            <h2 id="timer"></h1>
+            <h2 id="timer">0</h1>
         </div>
         <div Id="quizBox">
             <header id="top">Javascript</header>
@@ -24,9 +24,18 @@
                 <li><button id="answerButtons">Answer D</button></li>
             </ol>
         </div>
-        <div id="startDiv">
+        <div id="startdiv">
             <h3>Start the QUIZ!!</h3>
             <button id=startButton>START!!!</button>
+        </div>
+        <div id="scoreboard">
+            <div>
+                <ol>
+                    <h4><li>Score 1</li></h4>
+                    <h4><li>Score 2</li></h4>
+                    <h4><li>Score 3</li></h4>
+                </ol>
+            </div>
         </div>
     </div>
 </body>
