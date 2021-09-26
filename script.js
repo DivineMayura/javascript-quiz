@@ -5,4 +5,41 @@ var answerButton = document.querySelectorAll("button");
 var answers = document.querySelector("#answers");
 var content = document.querySelector("#content");
 var questonNumber = document.querySelector("#top")
+var timer =document.querySelector("#timer")
 
+
+
+//-------------------------------------------------------
+function countdown() {
+    var timeLeft = 60;
+var timer = setInterval(function () {
+    if (timeLeft > 0) {
+        timer.textContent = timeLeft;
+        timerLeft--;
+    } else {
+        timer.textContent = "";
+        console.log(TIMERrANoUT);
+        clearInterval(timer);
+    }
+    },1000);
+};
+
+
+questions = {
+    questionNumber
+}
+
+
+
+
+
+startButton.addEventListener("click", function() {
+
+
+
+
+
+
+
+
+})
