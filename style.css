@@ -8,7 +8,7 @@ h1 {
     display:flex;
     justify-content: center;
     align-items: center;
-    /* display:none; */
+    display:none;
 }
 #outerdiv {
     /* display:none; */
@@ -29,7 +29,12 @@ h1 {
 /* #startdiv {
     display: none;
 } */
-
+ol {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+}
 body {
     display:flex;
     justify-content: center;
@@ -48,7 +53,7 @@ div {
     bottom: 0px;
     right:5%;
     flex-direction: row;
-    list-style-type: none;
+
 }
 
 #scoreboard {
