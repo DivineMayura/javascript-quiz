@@ -236,14 +236,9 @@ sheet.addEventListener("submit", function(event){
     createSaves();
     saveSaves();
 
-    // GOBACKIWANTTOBEMONKEY();
 })
 
-// function GOBACKIWANTTOBEMONKEY() {
-//     scoreboard.setAttribute("style", "display:none;");
-//     outerdiv.setAttribute("style", "display:flex;");
-//     timeLeft = 120;
-// }
+
 
 pullSaves();
 startButton.addEventListener("click", begin);

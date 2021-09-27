@@ -1,9 +1,22 @@
-
-
-h1 {
-    color:red;
+* {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
-
+body {
+    background: #1A1A1A;
+}
+h1, h2, h3, h4, span, li, header, label {
+    color:#31E1BD;
+}
+button {
+    color:white;
+    background-color: #20947C;
+    border-color: #20947C;
+    height: 90px;
+    width: 100px;
+}
+p {
+    color: #E85971;
+}
 #quizBox {
     display:flex;
     justify-content: center;
@@ -11,24 +24,17 @@ h1 {
     display:none;
 }
 #outerdiv {
-    /* display:none; */
     position: relative;
     top: 15vh;
-    /* background-color: red; */
     height: 600px;
     width: 500px;
 }
 #innerdiv {
-    /* background-color: green; */
     height:200px;
     position: relative;
     bottom:80px;
-    /* display:none; */
 }
 
-/* #startdiv {
-    display: none;
-} */
 ol {
     display:flex;
     justify-content: center;
@@ -52,8 +58,6 @@ div {
     position: relative;
     bottom: 0px;
     flex-direction: row;
-    background-color: red;
-    /* background-size: contain; */
     width: auto;
 
 }
@@ -66,7 +70,6 @@ div {
     display:block;
     position:relative;
     top:200px;
-    /* display:none; */
 }
 #return{
     position: relative;
