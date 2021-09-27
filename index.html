@@ -18,29 +18,30 @@
         <div Id="quizBox">
             <header id="questionNumber">Javascript</header>
             <p id="content">Content</p>
-            <div id="answers">
-                <ol>
+            <div>
+                <ol id="answers">
                     <li><button id="a0" class="answerButt">Answer A</button></li>
                     <li><button id="a1" class="answerButt">Answer B</button></li>
                     <li><button id="a2" class="answerButt">Answer C</button></li>
                     <li><button id="a3" class="answerButt">Answer D</button></li>
-            </ol>
+                </ol>
             </div>
         </div>
         <div id="startdiv">
             <h4>Start the QUIZ!!</h4>
             <button id=startButton>START!!!</button>
         </div>
+    </div>
         <div id="scoreboard">
             <div>
-                <ol>
-                    <h5><li>Score 1</li></h5>
-                    <h5><li>Score 2</li></h5>
-                    <h5><li>Score 3</li></h5>
-                </ol>
+                <form id="sheet" method='POST'>
+                    <label for="scoreText">Scoreboard! </label>
+                    <input content="type your name here" placeholder="type your identifier here" type="text" name="scoreText" id="scoreText"/>
+                    <!-- <button id="submitScore">Subit Your Score!</button> -->
+                </form>
+                <ul id="scorelist"></ul>
             </div>
         </div>
-    </div>
     <script src="script.js" ></script>
 </body>
 </html>
