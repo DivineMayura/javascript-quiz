@@ -27,6 +27,7 @@ var quizBox         = document.querySelector("#quizBox");
 var outerdiv        = document.querySelector("#outerdiv");
 var showButton      = document.querySelector("#showbutton");
 var returnButton    = document.querySelector("#returnbutton");
+var clock           = document.querySelector("#clock");
 
 var scoreboard      = document.querySelector("#scoreboard");
 var submitScore     = document.querySelector("#submitScore");
@@ -113,6 +114,7 @@ scoreboard.setAttribute("style", "display:none;");
 //------------------------------------------------------------------//
 //             this is the ignition of the entire quiz
 function begin() {
+    redFlash();
     timeTrack();
 
         var timer = setInterval(function () {                       //countdown function using set interval and clear interval
@@ -139,7 +141,9 @@ answers.addEventListener("click", function(event) {
     } else
     //  if (event.target.textContent == JSON.stringify(questions[x].ans)) {    can't get it to delegate the event through the if/else statement because it returns something different
     //     console.log("not a button");} else 
-    { timeLeft = timeLeft - 20;}
+    { timeLeft = timeLeft - 20; 
+    redFlash();
+    }
 
     // console.log(event.target.textContent);
     // console.log(JSON.stringify(questions[x].ans));
@@ -219,7 +223,7 @@ function saveSaves() {
 
 sheet.addEventListener("submit", function(event){
     event.preventDefault();
-                                        //this is each scoreboard input with their score attached onto the end
+                    //this is each scoreboard input with their name attached to their score
     var scorekeepr = " -    -! " + score * timeLeft + " !-   - " +scoreText.value.trim();
 
     console.log("sumbit");
@@ -233,20 +237,45 @@ sheet.addEventListener("submit", function(event){
 
     scores.sort().reverse();
 
+    scoreText.setAttribute("style", "display:none;");
     createSaves();
     saveSaves();
-
 })
 
 
-
-pullSaves();
-startButton.addEventListener("click", begin);
-returnButton.addEventListener("click", function(){
+////////////////////////////////////////////////////////////
+pullSaves();                                    //this pulls the saves from local storage immediately on page load
+////////////////////////////////////////////////////////////
+startButton.addEventListener("click", begin);   //this event listener starts the whole thing
+////////////////////////////////////////////////////////////
+returnButton.addEventListener("click", function(){ //this reloads the page simulating a return to start
    window.location.reload() 
 });
-showButton.addEventListener("click", function(){
+////////////////////////////////////////////////////////////
+showButton.addEventListener("click", function(){ //this applies those attributes when the "Show Scores!" button is clicked
     scoreboard.setAttribute("style", "display:flex;");
     sheet.setAttribute("style", "display:none;");
     outerdiv.setAttribute("style", "display:none;");
 });
+////////////////////////////////////////////////////////////
+function redFlash(){    //this function changes the time and clock to display a red flash used when a question is answered incorrectly
+    var z = setInterval(function () {
+var goat = clock.getAttribute("style");
+console.log(goat);
+
+
+        if (goat == "color:#31E1BD;" ){
+            clock.setAttribute("style", "color:#E85971;");
+            timer.setAttribute("style", "color:#E85971;");
+        } else {
+            clock.setAttribute("style", "color:#31E1BD;");
+            timer.setAttribute("style", "color:#31E1BD;");
+
+            clearInterval(z);
+        }
+        
+
+        
+    },150);
+}
+//////////////////////////////////////////////////////////
