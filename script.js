@@ -159,7 +159,6 @@ answers.addEventListener("click", function(event) {
 
 //should bring up scoreboard
 function saveScore() {
-
     scoreboard.setAttribute("style", "display:flex;");
     outerdiv.setAttribute("style", "display:none;");
 
