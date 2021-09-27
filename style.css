@@ -57,6 +57,10 @@ div {
     width: auto;
 
 }
+#show {
+    position:relative;
+    top: -200px;
+}
 
 #scoreboard {
     display:block;
@@ -64,7 +68,10 @@ div {
     top:200px;
     /* display:none; */
 }
-
+#return{
+    position: relative;
+    top: -100px;
+}
 #scorelist {
     display:flex;
     justify-content: center;

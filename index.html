@@ -10,11 +10,16 @@
 </head>
 <body>
     <div id="outerdiv">
+        <div id="show">
+            <button id="showbutton">Show Scores!</button>
+        </div>
+
         <div id="innerdiv">
             <h1> Time Left: </h1>
             <h2 id="timer">0</h2>
             <span>seconds</span>
         </div>
+
         <div Id="quizBox">
             <header id="questionNumber">Javascript</header>
             <p id="content">Content</p>
@@ -27,21 +32,27 @@
                 </ol>
             </div>
         </div>
+
         <div id="startdiv">
             <h4>Start the QUIZ!!</h4>
             <button id=startButton>START!!!</button>
         </div>
     </div>
-        <div id="scoreboard">
-            <div>
-                <form id="sheet" method='POST'>
-                    <label for="scoreText">Scoreboard! </label>
-                    <input content="type your name here" placeholder="type your identifier here" type="text" name="scoreText" id="scoreText"/>
-                    <!-- <button id="submitScore">Subit Your Score!</button> -->
-                </form>
-                <ul id="scorelist"></ul>
-            </div>
+    
+    <div id="scoreboard">
+        <div id="return">
+            <button id="returnbutton">Return to start</button>
         </div>
+
+        <div>
+            <form id="sheet" method='POST'>
+                <label for="scoreText">Scoreboard! </label>
+                <input content="type your name here" placeholder="type your identifier here" type="text" name="scoreText" id="scoreText"/>
+                <!-- <button id="submitScore">Subit Your Score!</button> -->
+            </form>
+            <ul id="scorelist"></ul>
+        </div>
+    </div>
     <script src="script.js" ></script>
 </body>
 </html>

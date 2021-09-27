@@ -25,13 +25,15 @@ var questionNumber  = document.querySelector("#questionNumber");
 var timer           = document.querySelector("#timer");
 var quizBox         = document.querySelector("#quizBox");
 var outerdiv        = document.querySelector("#outerdiv");
+var showButton      = document.querySelector("#showbutton");
+var returnButton    = document.querySelector("#returnbutton");
 
 var scoreboard      = document.querySelector("#scoreboard");
 var submitScore     = document.querySelector("#submitScore");
 var sheet           = document.querySelector("#sheet");
 var scoreList       = document.querySelector("#scorelist");
-var scoreText            = document.querySelector("#scoreText");
-var scoreLabel            = document.querySelector("#scoreLabel");
+var scoreText       = document.querySelector("#scoreText");
+var scoreLabel      = document.querySelector("#scoreLabel");
 
 //question bank, I have an array which stores objects which contain arrays
 //I don't think I can get nested arrays work for this purpose
@@ -124,8 +126,7 @@ function begin() {
         pushQuestion();
 
         quizBox.setAttribute("style", "display:flex;");             // This makes quiz visibile on startup
-        
-document.querySelector("startdiv")[0].setAttribute("style", "visibility:hidden");                                                                //
+        document.querySelector("#startdiv").setAttribute("style", "display:none"); 
 }
 
 
@@ -134,14 +135,20 @@ answers.addEventListener("click", function(event) {
     if (event.target.textContent === questions[x].correct) {
         timeLeft = timeLeft + 10;
         score++;
-    } else if (event.target.textContent === questions[x].ans) {
-    } else { timeLeft = timeLeft - 20;}
+        
+    } else
+    //  if (event.target.textContent == JSON.stringify(questions[x].ans)) {    can't get it to delegate the event through the if/else statement because it returns something different
+    //     console.log("not a button");} else 
+    { timeLeft = timeLeft - 20;}
 
-    timeTrack(); //updates time immediately on click
+    // console.log(event.target.textContent);
+    // console.log(JSON.stringify(questions[x].ans));
 
+
+    x++;
     if (x>8 || timeLeft <= 0) {saveScore(); x = 0 }
-    x++
-
+    
+    timeTrack(); //updates time immediately upon interaction
     pushQuestion(); //displays the updated questions
 
 });
@@ -174,7 +181,7 @@ function pushQuestion() {
 
 
 
-
+// this is literally so complicated
 function createSaves() {
     scoreList.innerHTML = "";
 
@@ -198,8 +205,8 @@ function createSaves() {
 function pullSaves() {
     var savedSaves = JSON.parse(localStorage.getItem("scores"));
 
-    if(savedSaves !== null) {
-        scores = savedSaves;
+    if(savedSaves !== null) { //checks if there are already any saves in local storage
+        scores = savedSaves; // if there is it loads them then it creates them reguardless or not they exist lol
     }
     console.log("pullSaves");
     createSaves();
@@ -229,14 +236,22 @@ sheet.addEventListener("submit", function(event){
     createSaves();
     saveSaves();
 
-    GOBACKIWANTTOBEMONKEY();
+    // GOBACKIWANTTOBEMONKEY();
 })
 
-function GOBACKIWANTTOBEMONKEY() {
-    scoreboard.setAttribute("style", "display:none;");
-    outerdiv.setAttribute("style", "display:flex;");
-    timeLeft = 120;
-}
+// function GOBACKIWANTTOBEMONKEY() {
+//     scoreboard.setAttribute("style", "display:none;");
+//     outerdiv.setAttribute("style", "display:flex;");
+//     timeLeft = 120;
+// }
 
 pullSaves();
 startButton.addEventListener("click", begin);
+returnButton.addEventListener("click", function(){
+   window.location.reload() 
+});
+showButton.addEventListener("click", function(){
+    scoreboard.setAttribute("style", "display:flex;");
+    sheet.setAttribute("style", "display:none;");
+    outerdiv.setAttribute("style", "display:none;");
+});
