@@ -79,7 +79,7 @@ var questions = [{
 {   qn: "Question 8",
     q: "Safari, Chrome, Firefox, and Exporer are types of what?",
     ans: ["Operating Systems", "Web browsers", "Secure Shell", "Web Pylons"],
-    correct: "Web broswers"
+    correct: "Web browsers"
 },
 {   qn: "Question 9",
     q: "What was Google Chrome initially called?",
@@ -197,7 +197,7 @@ function createSaves() {
         li.setAttribute("data-index", y);
         li.setAttribute("style", "list-style-type:number");
         var points = document.createElement("h6");
-        points.textContent = score * timeLeft;
+        points.textContent = score * timeLeft + score;
         console.log("CreateSaves");
         scoreList.appendChild(li);
         
