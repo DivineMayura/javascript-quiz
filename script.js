@@ -102,25 +102,12 @@ var x = 0;
 var timeLeft = 120; //  -   -   -   -   -   -   -   -   -   -   -   -   //number for timeLeft on the timer
 var score = 0;
 var times=timeLeft;
-var total = totals(score,timeLeft);
 var scores = [];
 
 // scoreboard.setAttribute("style", "display:none;");
 
 
 
-// function open(){
-// };
-                
-
-
-
-
-
-
-
-
-                
 //------------------------------------------------------------------//
 //             this is the ignition of the entire quiz
 function begin() {
@@ -131,19 +118,14 @@ function begin() {
             timeTrack();                                            //   is
             if (timeLeft <= 0) {                                    //   the
                 clearInterval(timer);                               //  timer
-                // saveScore()                                         // function
+                saveScore()                                         // function
             }                                                       //
         },1000);
-        a0.innerText = questions[x].ans[0];                         //  This displays
-        a1.innerText = questions[x].ans[1];                         //  the questions
-        a2.innerText = questions[x].ans[2];                         //  and the
-        a3.innerText = questions[x].ans[3];                         //  answers as
-        content.innerText         = questions[x].q;                 //  the array
-        questionNumber.innerText  = questions[x].qn;                //  rotates
+        pushQuestion();
 
         quizBox.setAttribute("style", "display:flex;");             // This makes quiz visibile on startup
         
-// document.querySelector("startdiv")[0].setAttribute("style", "visibility:hidden");                                                                //
+document.querySelector("startdiv")[0].setAttribute("style", "visibility:hidden");                                                                //
 }
 
 
@@ -155,27 +137,20 @@ answers.addEventListener("click", function(event) {
     } else if (event.target.textContent === questions[x].ans) {
     } else { timeLeft = timeLeft - 20;}
 
-    timeTrack();
+    timeTrack(); //updates time immediately on click
+
     if (x>8 || timeLeft <= 0) {saveScore()}
-    
     x++
-                a0.innerText = questions[x].ans[0];                     //  This displays
-                a1.innerText = questions[x].ans[1];                     //  the questions
-                a2.innerText = questions[x].ans[2];                     //  and the
-                a3.innerText = questions[x].ans[3];                     //  answers as
-                content.innerText         = questions[x].q;             //  the array
-                questionNumber.innerText  = questions[x].qn;            //  rotates  
+
+    pushQuestion(); //displays the updated questions
+
 });
 
 //should bring up scoreboard
 function saveScore() {
-    console.log(timeLeft);
-    console.log(score);
-    console.log(totals(timeLeft,score))
-    // console.log(total);
+
     scoreboard.setAttribute("style", "display:flex;");
     outerdiv.setAttribute("style", "display:none;");
-    
 
 }
 
@@ -184,15 +159,18 @@ function timeTrack() {
     document.getElementById("timer").textContent = timeLeft;
 }
 
-//math for score
-function totals(a,b) {
-    return a * b;
+
+
+
+
+function pushQuestion() {
+    a0.innerText = questions[x].ans[0];                     //  This displays
+    a1.innerText = questions[x].ans[1];                     //  the questions
+    a2.innerText = questions[x].ans[2];                     //  and the
+    a3.innerText = questions[x].ans[3];                     //  answers as
+    content.innerText         = questions[x].q;             //  the array
+    questionNumber.innerText  = questions[x].qn;            //  rotates  
 }
-
-
-
-
-
 
 
 
@@ -206,14 +184,15 @@ function createSaves() {
         var li = document.createElement("li");
         li.textContent = savedscore;
         li.setAttribute("data-index", y);
-
+        li.setAttribute("style", "list-style-type:number");
         var points = document.createElement("h6");
-        points.textContent = score;
-        // points.textContent = totals(timeLeft,score);
+        points.textContent = score * timeLeft;
         console.log("CreateSaves");
         scoreList.appendChild(li);
         
-    }
+        // This baby sorts the scoreboard in reverse using the .sort
+        scores.sort().reverse(); //.reverse is an array method to reverse the order of the elements in an array
+    }                   //when combined it sorts it in reverse which is awesome
 }
 
 function pullSaves() {
@@ -234,7 +213,7 @@ function saveSaves() {
 sheet.addEventListener("submit", function(event){
     event.preventDefault();
                                         //this is each scoreboard input with their score attached onto the end
-    var scorekeepr = scoreText.value.trim() + " With a score of: " + score;
+    var scorekeepr = " -    -! " + score * timeLeft + " !-   - " +scoreText.value.trim();
 
     console.log("sumbit");
 
@@ -245,22 +224,13 @@ sheet.addEventListener("submit", function(event){
     scores.push(scorekeepr);
     scoreText.value = "";
 
+    scores.sort().reverse();
+
     createSaves();
     saveSaves();
 })
 
-// scoreList.addEventListener("click", function(event) {
-//     var element = event.target;
-//     console.log("click a bitch");
 
-//     if (element.matches("li") === true) {
-//         var yindex = element.getAttribute("data-index");
-//         scores.splice(yindex, 1);
-    
-
-//     saveSaves();
-//     pullSaves();}
-// });
 
 pullSaves();
 startButton.addEventListener("click", begin);
