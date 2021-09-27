@@ -107,7 +107,7 @@ var score = 0;
 var times=timeLeft;
 var scores = [];
 
-scoreboard.setAttribute("style", "display:none;");
+scoreboard.setAttribute("style", "display:none;"); //hides scoreboard on start up so it's still accessible later
 
 
 
@@ -128,7 +128,7 @@ function begin() {
         pushQuestion();
 
         quizBox.setAttribute("style", "display:flex;");             // This makes quiz visibile on startup
-        document.querySelector("#startdiv").setAttribute("style", "display:none"); 
+        document.querySelector("#startdiv").setAttribute("style", "display:none"); // hides the start button when quiz start
 }
 
 
@@ -186,60 +186,59 @@ function pushQuestion() {
 
 // this is literally so complicated
 function createSaves() {
-    scoreList.innerHTML = "";
-
+    scoreList.innerHTML = "";//creates placeholder
+        //for loop for duration of the length of scores
     for (var y = 0; y < scores.length; y++) {
         var savedscore = scores[y];
 
         var li = document.createElement("li");
         li.textContent = savedscore;
-        li.setAttribute("data-index", y);
+        li.setAttribute("data-index", y); //setting the list attributes and changing the style type
         li.setAttribute("style", "list-style-type:number");
-        var points = document.createElement("h6");
-        points.textContent = score * timeLeft + score;
-        console.log("CreateSaves");
-        scoreList.appendChild(li);
-        
+
+        scoreList.appendChild(li); //appends list item to score list so it's actually visible
+
+        console.log("CreateSaves");  //logs it into the console that it created saves
         // This baby sorts the scoreboard in reverse using the .sort  
         scores.sort().reverse(); //.reverse is an array method to reverse the order of the elements in an array
     }                   //when combined it sorts it in reverse which is awesome     both of these overwrite the origional array.
 }
 
-function pullSaves() {
+function pullSaves() { //retrieves scores
     var savedSaves = JSON.parse(localStorage.getItem("scores"));
 
     if(savedSaves !== null) { //checks if there are already any saves in local storage
         scores = savedSaves; // if there is it loads them then it creates them reguardless or not they exist lol
     }
     console.log("pullSaves");
-    createSaves();
+    createSaves(); //starts create saves function
 }
 
-function saveSaves() {
+function saveSaves() {  //saves the scores as a stringified version of themselves
     localStorage.setItem("scores", JSON.stringify(scores));
-    console.log("saveSaves");
+    console.log("saveSaves"); //an dlogs it to console
 }
 
-sheet.addEventListener("submit", function(event){
-    event.preventDefault();
+sheet.addEventListener("submit", function(event){ //activates when you hit enter or submit your score
+    event.preventDefault(); // prevents default obviously
                     //this is each scoreboard input with their name attached to their score
-    var scorekeepr = " -    -! " + score * timeLeft + " !-   - " +scoreText.value.trim();
+    var scorekeepr = " - " + score + " - " +scoreText.value.trim();
+    // var scorekeepr = " -    -! " + score * timeLeft + " !-   - " +scoreText.value.trim();  //removed this because it created an error for numbers over 1000
+    
+    
+    console.log("sumbit"); //console.logs submit
 
-    console.log("sumbit");
-
-    if (scorekeepr === "") {
-        return;
+    if (scorekeepr === "") { //this doesn't actually work, and I dont' really care to be honest
+        return;         //it's a can of worms
     }
 
-    scores.push(scorekeepr);
-    scoreText.value = "";
-
-    scores.sort().reverse();
-
-    scoreText.setAttribute("style", "display:none;");
-    createSaves();
-    saveSaves();
-})
+    scores.push(scorekeepr); //pushes the user submitted name and their score to scorekeepr
+    // scoreText.value = "";   this isn't necessary becaues I erase the text box and reloads page on return to menu
+    scores.sort().reverse();   //makes sure the scores are sorted correctly (again)
+    scoreText.setAttribute("style", "display:none;"); //hides text bar so user can only insert one
+    createSaves();  //starts create saves function
+    saveSaves(); //saves saves function
+});
 
 
 ////////////////////////////////////////////////////////////
