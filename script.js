@@ -104,7 +104,7 @@ var score = 0;
 var times=timeLeft;
 var scores = [];
 
-// scoreboard.setAttribute("style", "display:none;");
+scoreboard.setAttribute("style", "display:none;");
 
 
 
@@ -139,7 +139,7 @@ answers.addEventListener("click", function(event) {
 
     timeTrack(); //updates time immediately on click
 
-    if (x>8 || timeLeft <= 0) {saveScore()}
+    if (x>8 || timeLeft <= 0) {saveScore(); x = 0 }
     x++
 
     pushQuestion(); //displays the updated questions
@@ -190,9 +190,9 @@ function createSaves() {
         console.log("CreateSaves");
         scoreList.appendChild(li);
         
-        // This baby sorts the scoreboard in reverse using the .sort
+        // This baby sorts the scoreboard in reverse using the .sort  
         scores.sort().reverse(); //.reverse is an array method to reverse the order of the elements in an array
-    }                   //when combined it sorts it in reverse which is awesome
+    }                   //when combined it sorts it in reverse which is awesome     both of these overwrite the origional array.
 }
 
 function pullSaves() {
@@ -228,9 +228,15 @@ sheet.addEventListener("submit", function(event){
 
     createSaves();
     saveSaves();
+
+    GOBACKIWANTTOBEMONKEY();
 })
 
-
+function GOBACKIWANTTOBEMONKEY() {
+    scoreboard.setAttribute("style", "display:none;");
+    outerdiv.setAttribute("style", "display:flex;");
+    timeLeft = 120;
+}
 
 pullSaves();
 startButton.addEventListener("click", begin);
